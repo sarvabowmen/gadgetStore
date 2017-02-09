@@ -17,7 +17,7 @@ namespace GadgetStore
 
             routes.MapHttpRoute(name:"DefaultApi", 
                 routeTemplate: "/api/{controller}/{id}",
-                defaults: new { id= RouteParameter.Optional }
+                defaults:  new { controller = "Home", action = "Index", id = UrlParameter.Optional }
                 );
 
             #region MVC
