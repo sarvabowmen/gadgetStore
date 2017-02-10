@@ -1,5 +1,5 @@
 ﻿<div class="alert alert-danger" ng-show="data.orderError">
-    Error ({{data.orderError.status}}). The order could not be placed. <a href="#/submitorder"
+    Error ({{data.orderError.status}}). The order could not be placed. <a href="/submitorder"
                                                                           class="alert-link">Click here to try again</a>
 </div>
 <div class="panel panel-default" ng-hide="data.orderError">
@@ -11,7 +11,7 @@
         {{data.OrderID}}. <br />
     </div>
     <div class="panel-footer">
-        <a href="#" class="btn btn-danger btn-sm">Back to gadgets</a>
+        <a href="/" class="btn btn-danger btn-sm">Back to gadgets</a>
         <a href="{{data.OrderLocation}}" class="btn btn-default btn-sm">View order</a>
     </div>
 </div>

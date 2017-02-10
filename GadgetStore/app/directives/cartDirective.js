@@ -3,7 +3,7 @@
 storeCart.directive("cartDetails", function (cart) {
     return {
         restrict: "E",
-        templateUrl: "/app/components/cartDetails.html",
+        templateUrl: "/app/partials/cartDetails.html",
         controller: function ($scope) {
             var cartData = cart.getProducts();
             $scope.total = function () {

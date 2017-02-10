@@ -15,10 +15,10 @@ namespace GadgetStore
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapHttpRoute(name:"DefaultApi", 
-                routeTemplate: "/api/{controller}/{id}",
-                defaults:  new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-                );
+            routes.MapHttpRoute(
+                name: "DefaultApi",
+                routeTemplate: "api/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional });
 
             #region MVC
             routes.MapRoute(

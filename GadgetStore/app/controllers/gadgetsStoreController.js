@@ -1,24 +1,24 @@
 ﻿angular.module('gadgetsStore')
-    .constant('gadgetsUrl', 'http://localhost:your_port_here/api/gadgets')
-    .constant('ordersUrl', 'http://localhost:your_port_here/api/orders')
-    .constant('categoriesUrl', 'http://localhost:your_port_here/api/categories')
+    .constant('gadgetsUrl', 'http://localhost:59780/api/gadgets')
+    .constant('ordersUrl', 'http://localhost:59780/api/orders')
+    .constant('categoriesUrl', 'http://localhost:59780/api/categories')
     .controller('gadgetStoreCtrl', function ($scope, $http, $location, gadgetsUrl, categoriesUrl, ordersUrl, cart) {
 
         $scope.data = {};
 
         $http.get(gadgetsUrl)
-            .success(function (data) {
-                $scope.data.gadgets = data;
+            .then(function (data) {
+                $scope.data.gadgets = data.data;
             })
-            .error(function (error) {
+            .catch(function (error) {
                 $scope.data.error = error;
             });
 
         $http.get(categoriesUrl)
-        .success(function (data) {
-            $scope.data.categories = data;
+        .then(function (data) {
+            $scope.data.categories = data.data;
         })
-        .error(function (error) {
+        .catch(function (error) {
             $scope.data.error = error;
         });
 
@@ -26,12 +26,12 @@
             var order = angular.copy(shippingDetails);
             order.gadgets = cart.getProducts();
             $http.post(ordersUrl, order)
-            .success(function (data, status, headers, config) {
-                $scope.data.OrderLocation = headers('Location');
-                $scope.data.OrderID = data.OrderID;
+            .then(function (data) {
+                $scope.data.OrderLocation = data.headers('Location');
+                $scope.data.OrderID = data.data.OrderID;
                 cart.getProducts().length = 0;
             })
-            .error(function (error) {
+            .catch(function (error) {
                 $scope.data.orderError = error;
             }).finally(function () {
                 $location.path("/complete");
