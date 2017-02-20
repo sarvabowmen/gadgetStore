@@ -2,11 +2,11 @@
     .constant('gadgetsUrl', 'http://localhost:59780/api/gadgets')
     .constant('ordersUrl', 'http://localhost:59780/api/orders')
     .constant('categoriesUrl', 'http://localhost:59780/api/categories')
-    .controller('gadgetStoreCtrl', function ($scope, $http, $location, gadgetsUrl, categoriesUrl, ordersUrl, cart) {
+    .controller('gadgetStoreCtrl', function ($scope, $http, $location, gadgetsUrl, categoriesUrl, ordersUrl, cart, gadgetStoreService) {
 
         $scope.data = {};
 
-        $http.get(gadgetsUrl)
+        gadgetStoreService.getGadgets()
             .then(function (data) {
                 $scope.data.gadgets = data.data;
             })
@@ -14,7 +14,7 @@
                 $scope.data.error = error;
             });
 
-        $http.get(categoriesUrl)
+        gadgetStoreService.getCategories()
         .then(function (data) {
             $scope.data.categories = data.data;
         })
@@ -25,7 +25,7 @@
         $scope.sendOrder = function (shippingDetails) {
             var order = angular.copy(shippingDetails);
             order.gadgets = cart.getProducts();
-            $http.post(ordersUrl, order)
+            gadgetStoreService.sendOrder(order)
             .then(function (data) {
                 $scope.data.OrderLocation = data.headers('Location');
                 $scope.data.OrderID = data.data.OrderID;

@@ -74,7 +74,7 @@ namespace GadgetStore.Controllers
         [ResponseType(typeof(Order))]
         public async Task<IHttpActionResult> PostOrder(Order order)
         {
-            if (!ModelState.IsValid)
+           if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }

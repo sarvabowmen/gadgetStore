@@ -127,6 +127,7 @@
     <Content Include="app\partials\orderSubmitted.html" />
     <Content Include="app\partials\submitorder.html" />
     <Content Include="app\services\cartService.js" />
+    <Content Include="app\services\gadgetStoreService.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
