@@ -1,7 +1,20 @@
 ﻿/// <reference path="partials/gadgets.html" />
 /// <reference path="partials/gadgets.html" />
 angular.module("gadgetsStore", ["storeFilters", "storeCart", "ngRoute"])
-            .config(function ($routeProvider, $locationProvider) {
+            .config(function ($routeProvider, $locationProvider, getDateProvider, $provide) {
+
+                $provide.decorator('emailService', function ($delegate) {
+
+                    $delegate.getContactUsEmail = function () {
+                        return "info@aspiresys.com";
+                    };
+
+                    return $delegate;
+                });
+
+
+                getDateProvider.setTimeZone(4);
+
                 $routeProvider.when("/gadgets", {
                     templateUrl: "app/partials/gadgets.html"
                 });

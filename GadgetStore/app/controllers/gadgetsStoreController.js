@@ -2,9 +2,12 @@
     .constant('gadgetsUrl', 'http://localhost:59780/api/gadgets')
     .constant('ordersUrl', 'http://localhost:59780/api/orders')
     .constant('categoriesUrl', 'http://localhost:59780/api/categories')
-    .controller('gadgetStoreCtrl', function ($scope, $http, $location, gadgetsUrl, categoriesUrl, ordersUrl, cart, gadgetStoreService) {
+    .controller('gadgetStoreCtrl', function ($scope, $http, $location, gadgetsUrl, categoriesUrl, ordersUrl, cart, gadgetStoreService, getDate, emailService) {
 
         $scope.data = {};
+        $scope.data.currentDate = getDate.getTime();
+
+        $scope.data.contactUs = emailService.getContactUsEmail();
 
         gadgetStoreService.getGadgets()
             .then(function (data) {

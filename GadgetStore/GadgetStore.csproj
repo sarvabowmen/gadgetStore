@@ -126,7 +126,9 @@
     <Content Include="app\partials\gadgets.html" />
     <Content Include="app\partials\orderSubmitted.html" />
     <Content Include="app\partials\submitorder.html" />
+    <Content Include="app\providers\dateProvider.js" />
     <Content Include="app\services\cartService.js" />
+    <Content Include="app\services\emailService.js" />
     <Content Include="app\services\gadgetStoreService.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
